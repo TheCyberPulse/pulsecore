@@ -1,24 +1,15 @@
-# README
+# xeraen core
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is Rails 6 base application which employs the following gems:
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* devise
+* cancancan
+* paper_trail
+* paranoia
+* rubocop
+* brakeman
+* capistrano
+* daemons
+* delayed_job_active_record
+* pg
+* will_paginate-bootstrap
