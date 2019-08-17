@@ -1,0 +1,15 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: __database__
+  pool: 5
+  username: __user__
+  password: __pass__
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: __database___test
+  pool: 5
+  username: __user__
+  password: __pass__

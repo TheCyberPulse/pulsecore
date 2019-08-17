@@ -1,0 +1,18 @@
+secret_key_base: 'REPLACEME'
+secret_token: 'REPLACEME'
+devise_pepper: 'REPLACEME'
+
+allow_mass_password_update: 'no'
+default_password: 'password'
+
+load_demo_data: 'no'
+
+mail_username: ''
+mail_password: ''
+mail_server: 'localhost'
+mail_port: '1025'
+mail_domain: 'example.com'
+mail_from: 'test@example.com'
+mail_default_url_host: 'localhost'
+mail_default_url_port: '3000'
+mail_test_recipient_override: 'test@example.com'

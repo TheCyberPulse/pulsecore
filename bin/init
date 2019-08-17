@@ -1,0 +1,86 @@
+#!/bin/bash
+
+echo ''
+echo -n "This will overwrite your application.yml and database.yml as well as reinit your db.  Continue? [y/N] "
+read go
+
+echo ''
+
+if [[ "$go" != 'Y' && "$go" != 'y' ]] ; then
+  echo 'Exiting...'
+  echo ''
+  exit 0
+fi
+
+echo ''
+echo 'Beginning initialization sequence in...'
+echo ''
+
+sleep 1
+echo '3'
+sleep 1
+echo '2'
+sleep 1
+echo '1'
+sleep 1
+echo ''
+
+bundle install
+
+echo ''
+echo -n "What is your database name? "
+read database
+echo ''
+
+echo -n "What is your database username (must have superuser)? "
+read username
+echo ''
+
+echo -n "What is your database password? "
+read password
+
+echo ''
+echo '.'
+echo '..'
+echo '...'
+echo '....'
+echo '.....'
+echo '....'
+echo '...'
+echo '..'
+echo '.'
+echo ''
+
+# Get out of the bin directory.
+if [[ $PWD = *"/bin"* ]] ; then
+  cd ..
+fi
+
+cp "$PWD/config/application.yml.example" "$PWD/config/application.yml"
+cp "$PWD/config/database.yml.example" "$PWD/config/database.yml"
+
+uname="$(uname -a)"
+
+# sed works differently on OS X...go figure...
+if [[ $uname = *"Darwin"* ]] ; then
+  sed -i '' "s/__user__/$username/g" "$PWD/config/database.yml"
+  sed -i '' "s/__pass__/$password/g" "$PWD/config/database.yml"
+  sed -i '' "s/__database__/$database/g" "$PWD/config/database.yml"
+  sed -i '' 's/disallow/allow/g' "$PWD/config/application.yml"
+else
+  sed -i "s/__user__/$username/g" "$PWD/config/database.yml"
+  sed -i "s/__pass__/$password/g" "$PWD/config/database.yml"
+  sed -i "s/__database__/$database/g" "$PWD/config/database.yml"
+  sed -i 's/disallow/allow/g' "$PWD/config/application.yml"
+fi
+
+bundle exec rake db:reinit
+
+echo ''
+echo ''
+echo '************************************************************************'
+echo '************************************************************************'
+echo 'You are now ready to run the Rails server.  Goodbye!'
+echo '************************************************************************'
+echo '************************************************************************'
+echo ''

@@ -1,0 +1,37 @@
+!!!
+%html
+  %head
+    %title Base Application
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag 'application', :media => 'all'
+    = javascript_pack_tag 'application'
+    %link{:rel => 'stylesheet', :href => 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', :integrity => 'sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN', :crossorigin => 'anonymous'}
+
+  %body
+    .container
+      - if notice
+        .row
+          .alert.alert-success
+            %button.close{:data => {:dismiss => 'alert'}}
+              ×
+            %i.fa-fw.fa.fa-check
+            = notice
+      - if alert
+        .row
+          .alert.alert-warning
+            %button.close{:data => {:dismiss => 'alert'}}
+              ×
+            %i.fa-fw.fa.fa-warning
+            = alert
+      .row
+        .col-md-12.pull-right
+          - if user_signed_in?
+            = link_to(destroy_user_session_path) do
+              %button#logout.btn.pull-right
+                %span
+                  %i.fa.fa-sign-out
+      .row
+        .col-md-12
+          = yield
