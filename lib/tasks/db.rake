@@ -1,7 +1,6 @@
 require 'rake'
 
 namespace :db do
-
   desc 'Set all user password to the default password.'
   task :reset_passwords => %i[environment] do
     if ENV['allow_mass_password_update'] == 'yes' && !Rails.env.production?
