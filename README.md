@@ -1,4 +1,4 @@
-# xeraen core
+# PulseCore
 
 This is Rails 6 base application which employs the following gems:
 
